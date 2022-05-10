@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MonsterGroup</title>
+        <meta name="description" content="Monstergroup" />
+        <meta name="keywords" content="Monstergroup" />
+        <meta http-equiv="cache-control" content="public, no-transform" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="canonical" href="/" />
+        <link rel="preconnect" href="https://place-hold.it/" crossorigin="anonymous" />
+
+        <!--fontface.css-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
+
+        <!--monstergroup.css-->
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+        <link rel="stylesheet" href="css/all.min.css" />
+    </head>
+    <body class="bg-black text-white overflow-x-hidden" :class="[menubar ? 'overflow-hidden' : '']" 
+        x-data="{
+            menubar: false, 
+            filterModalTabs: [],
+            getActiveStatus(id) {
+                return id === this.activeTab
+            }
+        }"
+    >
+        <!--loading-->
+        <div class="loading w-full h-full fixed top-0 left-0 z-50 animate__hidden" style="--timer: 1s;">
+            <div class="loading-bg bg-black w-full h-full absolute top-0 left-0 animate__bgLeft"></div>
+            <div class="loading-body relative z-10 flex items-center justify-center min-h-full flex-col animate__hidden">
+                <img class="loading-logo object-contain mt-4" src="assets/logo.png" width="160" height="65">
+                <span class="loading-bar rounded-full block w-20 h-0.5  bg-grey relative mt-4 overflow-hidden"><span class="loading-bar-inner animate__progress absolute top-0 left-0 w-full h-full bg-primary"></span>
+            </div>
+        </div>
+        
+        <!--header-->
+        <header class="header fixed top-0 inset-x-0 z-40 bg-gradient-to-t from-transparent to-black/80">
+            <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 xl:px-32">
+                <div class="header-body flex items-center justify-between h-20 gap-4">
+                    <div class="header-left"><a href="/" class="logo"><img class="object-contain -ml-2 mt-4" src="assets/logo.png" width="160" height="65"></a></div>
+                    <div class="header-right">
+                        <button class="header-btn header-btn--menu hamburger h-20 px-4 -mr-4 relative z-30 block md:hidden" @click="menubar =! menubar" :class="[menubar ? 'collapsed' : '']" type="button" name="btn-menubar" aria-label="btn-menubar">
+                            <span class="hamburger-icon"><span class="hamburger-icon-inner"></span></span>
+                        </button>
+                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent" :class="[menubar ? 'open' : '']">
+                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
+                                <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
+                                    <li class="nav-item"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                                    <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                                    <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                                    <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                                    <li class="nav-item active"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                                    <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                                </ul>
+                                <div class="address flex gap-4 items-start justify-between md:hidden">
+                                    <p class="address-text">
+                                        <span class="text-lg font-semibold block">JAKARTA</span> 
+                                        <span class="text-xs block">
+                                            Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                            Jakarta Barat, DKI Jakarta - 11430,<br>
+                                            Indonesia
+                                        </span>
+                                    </p>
+                                    <a class="btn btn-outline  w-32 h-10 text-xs px-2 border shadow-white" href="/">see on maps <i class="icon icon-xs icon-chevright ml-2"></i> </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--main-->
+        <main class="main">
+            <div class="main-body">
+                
+                <!--section.header-->
+                <section class="section section--header">
+                    <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 py-20 pt-32 flex flex-col justify-center h-full xl:px-32">
+                        <img class="ornament absolute top-20 -left-32 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <div class="section-body">
+                            <h1 class="section-breadcrumb text-sm mb-6 text-primary wow animate__fadeInUp">/ News</h1>
+                            <p class="section-lead text-2xl md:text-4xl font-semibold leading-relaxed mb-6 wow animate__fadeInUp" data-wow-delay=".8s">
+                                Finally! Our new website is up and running
+                            </p>
+                            <a class="section-scrolldown block font-playfair mb-8 wow animate__fadeInUp" data-wow-delay="1s" href="#news" data-toggle="menuspy"> <span class="section-scrolldown-text text-primary text-xs wow animate__fadeInDown">scroll down</span> </a>
+                            <figure class="section--header-img -ml-4 -mb-40 xl:-ml-32">
+                                <img class="h-full object-cover  parallax" src="assets/imageNews.jpg" width="1280" height="720">
+                            </figure>
+                        </div> 
+                        <img class="ornament absolute bottom-0 -right-32 pointer-events-none max-w-full h-auto object-contain opacity-30 z-auto" src="assets/ornament2.png" width="300" height="300">                
+                    </div>
+                </section>
+
+                <!--section--news-->
+                <section id="news" class="section section--news bg-white text-black" 
+                    x-data="{
+                        articles: [
+                            {
+                                link: '/',
+                                img: 'assets/image5.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image6.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image7.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image2.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image3.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image4.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image6.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image7.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                        ]
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32 relative">
+                        <h1 class="section-title text-5xl font-semibold font-playfair mb-12 xl:absolute xl:top-0 xl:right-0 xl:rotate-90 xl:origin-top-left xl:-mr-24 xl:mt-20"><span class="wow animate__fadeInUp">News</span></h1>
+                        <div class="section-body wow animate__fadeInUp" data-wow-delay=".5s">
+                            <div class="grid md:grid-cols-3 gap-12">
+                                <template x-for="x in articles">
+                                    <article class="articles">
+                                        <a :href="x.link" class="item flex flex-col">
+                                            <span class="item-img block"><span class="relative aspect-[3/2] rounded-lg overflow-hidden block w-full"><img class="absolute left-0 top-0 w-full h-full object-cover transition" :src="x.img" width="200" height="112" alt="image"></span></span>
+                                            <figcaption class="item-desc flex-1 pt-6">
+                                                <h1 class="item-desc-title text-lg xl:text-2xl font-semibold mb-2 font-playfair" x-text="x.title"></h1>
+                                                <span class="item-desc-read flex items-center text-sm mt-6">READ THIS <i class="icon icon-xs icon-chevright ml-4"></i></span>
+                                            </figcaption>
+                                        </a>
+                                    </article>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <!--section.contact-->
+                <section class="section section--contact">
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute -top-40 -left-64 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <h1 class="section-title font-semibold text-5xl mb-16">
+                            <small class="block font-normal text-sm mb-6 text-primary">/ Contact</small>
+                            <a href="/" class="letstalk inline-block relative">
+                                Let's Talk. <span class="rplus ease-in duration-300 text-9xl leading-none text-primary font-thin absolute leading-8 -right-8 top-2">+</span>
+                            </a>
+                        </h1>
+                        <div class="section-body">
+                            <div class="flex flex-col gap-24 md:flex-row">
+                                <div class="flex-item flex-1 overflow-hidden">
+                                    <div class="swiper section--contact-swiper" x-data="{
+                                         locations: [
+                                             {
+                                                 city: 'Jakarta',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Singapore',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Cambodia',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             }
+                                         ]
+                                     
+                                     }">
+                                         <div class="swiper-wrapper">
+                                             <template x-for="x in locations">
+                                                 <div class="swiper-slide">
+                                                     <div class="address">
+                                                         <p class="address-text">
+                                                             <span class="text-xl font-semibold block mb-2" x-text="x.city"></span> 
+                                                             <span class="text-sm block" x-html="x.detail"></span>
+                                                         </p>
+                                                     </div>
+                                                 </div>
+                                             </template>
+                                         </div>
+                                         <div class="swiper-interactive flex justify-between items-center mt-8">
+                                             <div class="swiper-link md:hidden">
+                                                 <a class="btn btn-outline w-32 h-10 text-xs px-2 border shadow-white ml-2 mb-2" href="/">see on maps <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                             </div>
+                                             <div class="swiper-navigation flex items-center justify-between gap-6 h-10">
+                                                 <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary"> <i class="icon icon-xs icon-chevleft ml-2"></i></div>
+                                                 <div class="swiper-button swiper-button-next text-white hover:text-primary"> <i class="icon icon-xs icon-chevright ml-2"></i> </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="flex-item flex-1 hidden md:block">
+                                    <a class="btn btn-outline w-32 h-10 text-sm px-2 border shadow-white ml-2 mb-2" href="/">see on maps <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                </div>
+                            </div>
+                        </div>
+                        <img class="ornament absolute -bottom-44 -right-12 pointer-events-none max-w-full h-auto object-contain opacity-30" src="assets/ornament2.png" width="300" height="300">
+                    </div>
+                    
+                </section>
+
+            </div>
+        </main>
+        
+        <!--footer-->
+        <footer class="footer">
+            <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                <div class="footer-bottom flex flex-col md:flex-row md:justify-between md:items-end gap-8">
+                    <div class="footer-bottom-right md:mb-0 md:order-last">
+                        <ul class="nav flex flex-wrap w-5/6 md:w-full list-none gap-2">
+                            <li class="nav-item active"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                            <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                            <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                            <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                            <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                            <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom-left">
+                        <ul class="footer-socmed flex list-none mb-4 gap-2">
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-linkedin'></i></a></li>
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-facebook' ></i></a></li>
+                        </ul>
+                        <span class="footer-copyright">MonsterGroup 2020, Co. © 2021. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" defer></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+    </body>
+</html>

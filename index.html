@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MonsterGroup</title>
+        <meta name="description" content="Monstergroup" />
+        <meta name="keywords" content="Monstergroup" />
+        <meta http-equiv="cache-control" content="public, no-transform" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="canonical" href="/" />
+        <link rel="preconnect" href="https://place-hold.it/" crossorigin="anonymous" />
+
+        <!--fontface.css-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
+
+        <!--monstergroup.css-->
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+        <link rel="stylesheet" href="css/all.min.css" />
+    </head>
+    <body class="bg-black text-white overflow-x-hidden" :class="[menubar ? 'overflow-hidden' : '']" 
+        x-data="{
+            menubar: false, 
+            filterModalTabs: [],
+            getActiveStatus(id) {
+                return id === this.activeTab
+            }
+        }"
+    >
+        <!--loading-->
+        <div class="loading w-full h-full fixed top-0 left-0 z-50 animate__hidden" style="--timer: 1s;">
+            <div class="loading-bg bg-black w-full h-full absolute top-0 left-0 animate__bgLeft"></div>
+            <div class="loading-body relative z-10 flex items-center justify-center min-h-full flex-col animate__hidden">
+                <img class="loading-logo object-contain mt-4" src="assets/logo.png" width="160" height="65">
+                <span class="loading-bar rounded-full block w-20 h-0.5  bg-grey relative mt-4 overflow-hidden"><span class="loading-bar-inner animate__progress absolute top-0 left-0 w-full h-full bg-primary"></span>
+            </div>
+        </div>
+        
+        <!--header-->
+        <header class="header fixed top-0 inset-x-0 z-40 bg-gradient-to-t from-transparent to-black/80">
+            <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 xl:px-32">
+                <div class="header-body flex items-center justify-between h-20 gap-4">
+                    <div class="header-left"><a href="/" class="logo"><img class="object-contain -ml-2 mt-4" src="assets/logo.png" width="160" height="65"></a></div>
+                    <div class="header-right">
+                        <button class="header-btn header-btn--menu hamburger h-20 px-4 -mr-4 relative z-30 block md:hidden" @click="menubar =! menubar" :class="[menubar ? 'collapsed' : '']" type="button" name="btn-menubar" aria-label="btn-menubar">
+                            <span class="hamburger-icon"><span class="hamburger-icon-inner"></span></span>
+                        </button>
+                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent" :class="[menubar ? 'open' : '']">
+                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
+                                <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
+                                    <li class="nav-item active"><a href="#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                                    <li class="nav-item"><a href="#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                                    <li class="nav-item"><a href="#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                                    <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                                    <li class="nav-item"><a href="#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                                    <li class="nav-item"><a href="#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                                </ul>
+                                <div class="address flex gap-4 items-start justify-between md:hidden">
+                                    <p class="address-text">
+                                        <span class="text-lg font-semibold block">JAKARTA</span> 
+                                        <span class="text-xs block">
+                                            Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                            Jakarta Barat, DKI Jakarta - 11430,<br>
+                                            Indonesia
+                                        </span>
+                                    </p>
+                                    <a class="btn btn-outline w-28 h-7 text-xs px-2 border shadow-white" href="contact.html">see on maps <i class="icon icon-xs icon-chevright ml-2"></i> </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--main-->
+        <main class="main">
+            <div class="main-body">
+                <!-- section.headline-->
+                <section id="home" class="section section--headline h-screen" 
+                    x-data="{
+                        headlines: [
+                            {
+                                link: '/',
+                                img: 'assets/image.jpg',
+                                title: `Scale-up <br>your business.`,
+                                text: `Our long history of forward thinking has helped us put our clients ahead of their competitions by creating a lasting impact and revolutionizing their businesses.`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image3.jpg',
+                                title: `Connect way.`,
+                                text: `Consumers are interacting with brands in more engaging ways than ever before. It’s our job to help you understand, down to the last eyelash, who your most valuable consumers are and how they behave.`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image4.jpg',
+                                title: `Intelligent strategies.`,
+                                text: `Consumers are interacting with brands in more engaging ways than ever before. It’s our job to help you understand, down to the last eyelash, who your most valuable consumers are and how they behave.`,
+                            },
+                        ],
+                    }"
+                >
+                    <div class="swiper section--headline-swiper h-full">
+                        <div class="swiper-wrapper">
+                            <template x-for="x in headlines">
+                                <div class="swiper-slide">
+                                    <img class="swiper-slide-img w-full h-full object-cover parallax" :src="x.img" width="1280" height="720">
+                                    <div class="swiper-slide-desc absolute inset-0 z-20 bg-gradient-to-t from-black to-black/20 pointer-events-none">
+                                        <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 md:pl-32 lg:pl-80 py-20 pt-32 flex flex-col justify-center h-full">
+                                            <div class="max-w-screen-md pointer-events-auto h-96 animate__animated">
+                                                <h1 class="swiper-slide-desc-title text-4xl lg:text-6xl leading-tight uppercase font-bold text-primary mb-4" x-html="x.title"></h1>
+                                                <p class="swiper-slide-desc-text text-base lg:text-xl lineclamp-5" x-html="x.text"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="swiper-interactive absolute inset-0 z-10 pointer-events-none">
+                            <div class="container relative max-w-full mx-auto px-4 py-20 xl:px-32 md:max-w-screen-2xl h-full">
+                                <div class="h-full relative">
+                                    <div class="swiper-info absolute top-1/2 left-0 pt-2 -mt-64 w-24 md:-mt-48 md:h-96 lg:w-40 pointer-events-auto wow animate__fadeIn">
+                                        <div class="swiper-fraction mb-1"><span class="current text-xl lg:text-4xl"></span> / <span class="total text-white/50"></span></div>
+                                        <div class="swiper-pagination bg-white/25"></div>
+                                    </div>
+                                    <div class="swiper-navigation absolute w-48 md:w-80 bottom-0 inset-x-0 pointer-events-auto flex items-center justify-between gap-6">
+                                        <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary wow animate__fadeInUp">prev</div>
+                                        <div class="flex-1 mt-1">
+                                            <span class="border-t border-white/20 wow animate__widthIn block" data-wow-delay=".5s"></span>
+                                        </div>
+                                        <div class="swiper-button swiper-button-next text-white hover:text-primary wow animate__fadeInUp" data-wow-delay="1s">next</div>
+                                    </div>
+                                    <a class="swiper-scrolldown block text-center absolute bottom-0 right-0 font-playfair pointer-events-auto" href="#number" data-toggle="menuspy">
+                                        <span class="swiper-scrolldown-text text-primary text-xs wow animate__fadeInDown">scroll down</span>
+                                        <span class="swiper-scrolldown-arrow relative block flex flex-col items-center h-32 lg:h-72 mt-4">
+                                            <span class="flex-1">
+                                                <span class="border-l border-white/20 wow animate__heightIn block" data-wow-delay=".5s"></span>
+                                            </span>
+                                            <span class="absolute bottom-0 wow animate__fadeInDown" data-wow-delay="1s"><i class='bx bx-chevron-down bx-md animate__floating'></i></span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--section.number-->
+                <section id="number" class="section section--number"
+                    x-data="{
+                        numbers: [
+                            {
+                                qty: '300+',
+                                text: 'team number.'
+                            },
+                            {
+                                qty: '14',
+                                text: 'office.'
+                            },
+                            {
+                                qty: '200+',
+                                text: 'number of clients.'
+                            }
+                        ],
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute top-20 -left-32 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <h1 class="section-title text-sm mb-6 text-primary wow animate__fadeInUp" data-wow-delay=".5s">/ Monster Group by Numbers</h1>
+                        <div class="section-body relative flex items-start justify-between h-64">
+                            <div class="section--number-list flex flex-col md:flex-row -mx-4 -mb-8 flex-1 pr-48 md:pr-64 whitespace-nowrap relative">
+                                <template x-for="x in numbers">
+                                    <div class="section--number-list-item p-4 flex flex-1 pb-8 md:border-b md:justify-center md:border-b-0 md:border-l border-white/20">
+                                        <h1 class="text-5xl lg:text-8xl font-semibold wow animate__fadeInUp" data-wow-delay=".5s">
+                                            <span x-text="x.qty"></span>
+                                            <small class="font-normal text-primary text-sm block" x-html="x.text"></small>
+                                        </h1>
+                                    </div>
+                                </template>
+                                <span class="absolute border-b border-white/20 -bottom-px left-4 right-8 hidden md:block"></span>
+                            </div>
+                            <div class="globe w-64 h-full absolute top-0 -right-16 md:right-0"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--section.about -->
+                <section id="about" class="section section--about">
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <h1 class="section-title text-center text-sm mb-6 text-primary wow animate__fadeInUp"><i>in</i> MonsterGroup</h1>
+                        <p class="section-title text-center max-w-screen-sm text-2xl md:text-4xl mx-auto leading-tight font-semibold mb-32 wow animate__fadeInUp" data-wow-delay=".8">
+                            We Believe the Key to Success Is Integrity, Persistence, and Strong Will
+                        </p>
+                        <div class="section-body">
+                            <div class="section--about-top flex flex-col md:flex-row md:justify-between gap-12 md:gap-32">
+                                <div class="section--about-top-desc flex-1 text-base font-light leading-relaxed">
+                                    <h1 class="font-bold text-3xl md:text-4xl mb-6 flex items-center -mt-6 whitespace-nowrap">
+                                        <span class="wow animate__fadeInUp">Who we are? </span>
+                                        <a href="#" data-popup-open="about" class="relative mx-4 w-full md:-mr-32 z-10">
+                                            <span class="border-t border-white/20 wow animate__widthIn block" data-wow-delay=".5s"></span>
+                                            <span class="play absolute w-10 h-10 -top-5 -right-5 md:-top-10 md:w-20 md:h-20 md:-right-10 flex items-center justify-center">
+                                                <img class="w-full h-full" src="assets/play-circle.png" width="90" height="90">
+                                                <i class="border rounded-full border-white/20 absolute top-0 left-0 scale-150 w-full h-full"></i>
+                                            </span>
+                                        </a>
+                                    </h1>
+                                    <p class="mb-4 wow animate__fadeInUp" data-wow-delay=".8s">Monster Group has embedded innovative technologies and enabled companies to reimagine their businesses, processes, and experiences.</p>
+                                    <p class="mb-4 wow animate__fadeInUp" data-wow-delay="1s">We have expanded our business amongst our four business segments such as Telco Service Provider, HR Services Solution, IT 360 Solution and Creative Powerhouse.</p>
+                                    <div class="mt-12 md:hidden"><img class="w-full parallax" src="assets/image7.jpg" width="640" height="520" alt="image"></div>
+                                    <div class="-ml-4 mt-32 xl:-ml-32 hidden md:block"><img class="w-full parallax" src="assets/image5.jpg" width="640" height="520" alt="image"> </div>
+                                </div>
+                                <div class="section--about-top-right -mt-2 flex-1">
+                                    <div class="-mr-4 xl:-mr-32 mb-12 hidden md:block"><img class="w-full parallax" src="assets/image7.jpg" width="640" height="520" alt="image"></div>
+                                    <a class="btn btn-outline w-32 h-10 text-sm md:-ml-12 border shadow-white wow animate__fadeInUp" data-wow-delay="1.6s" href="about.html">Read more <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <img class="ornament absolute bottom-20 -right-32 pointer-events-none max-w-full h-auto object-contain opacity-30 z-auto" src="assets/ornament2.png" width="300" height="300">
+                    </div>
+                </section>
+
+                <!--section.products-->
+                <section id="compro" class="section section--product"
+                    x-data="{
+                        activeTab: 'companies',
+                        products: [
+                            {
+                                id: 'companies',
+                                name: 'Our Companies',
+                                lead: `Our services is simple. We exist to create things people love. Why love? Because love brings joy to people’s lives.`,
+                                items: [
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_KitaDigi(1).png',
+                                        name: 'Kita Digi',
+                                        text: `Our team experience, insights and skills are the fuel that drives change and helps our clients make an impact that matters.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_Lakugan(1).png',
+                                        name: 'Lakugan',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterAR(1).png',
+                                        name: 'Monster AR',
+                                        text: `The professionals at Monster Group are available 24 hours / 7 days a week.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_ohBold(1).png',
+                                        name: 'OhBold',
+                                        text: `Designed globally at the core to meet both corporate and regional needs.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_TOGIndonesia(1).png',
+                                        name: 'TOG Indonesia',
+                                        text: `Our team experience, insights and skills are the fuel that drives change and helps our clients make an impact that matters.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_TripleOneGlobal(1).png',
+                                        name: 'Triple One Global',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterCode(1).png',
+                                        name: 'Monster Code',
+                                        text: `Designed globally at the core to meet both corporate and regional needs.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterMAC(1).png',
+                                        name: 'Monster MAC',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_TripleOneGlobal(1).png',
+                                        name: 'Triple One Global',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterCode(1).png',
+                                        name: 'Monster Code',
+                                        text: `Designed globally at the core to meet both corporate and regional needs.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterMAC(1).png',
+                                        name: 'Monster MAC',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                ]
+                            },
+                            {
+                                id: 'products',
+                                name: 'Our Products',
+                                lead: `Our services is simple. We exist to create things people love. Why love? Because love brings joy to people’s lives.`,
+                                items: [
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_KitaDigi(1).png',
+                                        name: 'Kita Digi',
+                                        text: `Our team experience, insights and skills are the fuel that drives change and helps our clients make an impact that matters.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_Lakugan(1).png',
+                                        name: 'Lakugan',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterAR(1).png',
+                                        name: 'Monster AR',
+                                        text: `The professionals at Monster Group are available 24 hours / 7 days a week.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_ohBold(1).png',
+                                        name: 'OhBold',
+                                        text: `Designed globally at the core to meet both corporate and regional needs.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_TOGIndonesia(1).png',
+                                        name: 'TOG Indonesia',
+                                        text: `Our team experience, insights and skills are the fuel that drives change and helps our clients make an impact that matters.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_TripleOneGlobal(1).png',
+                                        name: 'Triple One Global',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterCode(1).png',
+                                        name: 'Monster Code',
+                                        text: `Designed globally at the core to meet both corporate and regional needs.`,
+                                    },
+                                    {
+                                        link: '/',
+                                        img: 'assets/products/Logo_MonsterMAC(1).png',
+                                        name: 'Monster MAC',
+                                        text: `Offering a comprehensive suite of IT Services. We focus on your IT so you can focus on your business..`,
+                                    },
+                                ]
+                            },
+                                
+                            
+                        ],
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <div class="tab relative">
+                            <div class="tab-nav mb-12 md:absolute md:top-0 md:left-0 md:rotate-90 md:origin-top-left md:mb-0 md:ml-12">
+                                <ul class="tab-nav-list list-none inline-flex items-center text-xl text-white/50 border border-white/20 whitespace-nowrap wow animate__fadeInUp">
+                                    <template x-for="tab in products">
+                                        <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(tab.id)}">
+                                            <a href="#" :data-tab-open="tab.id" class="flex items-center h-12 px-4" x-text="tab.name"></a>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <div class="tab-content md:pl-24">
+                                <template x-for="tab in products">
+                                    <div :id="tab.id" class="tab-content-item" :class="{'hidden': !getActiveStatus(tab.id)}">
+                                        <h1 class="section-title text-sm mb-6 text-primary wow animate__fadeInUp" x-text="`/ ${tab.name}`"> </h1>
+                                        <p class="section-lead max-w-screen-md text-2xl md:text-3xl leading-tight font-semibold mb-16 wow animate__fadeInUp" data-wow-delay="1s" x-text="tab.lead"></p>
+                                        <div class="section-body wow animate__fadeInUp" data-wow-delay="1.2s">
+                                            <div class="swiper section--product-swiper -mx-4 px-4 md:mx-0 md:px-0">
+                                                <div class="swiper-wrapper">
+                                                    <template x-for="x in tab.items">
+                                                        <div class="swiper-slide">
+                                                            <a class="item block" :href="x.link">
+                                                                <figure class="item-logo inline-block brightness-0 invert mb-4"><img alt="logo" class="object-contain w-auto h-6" :src="x.img" width="162" height="40"></figure>
+                                                                <h1 class="text-xl font-semibold mb-2" x-text="x.name"></h1>
+                                                                <div class="relative pr-10">
+                                                                    <p class="text-sm font-light text-white/80" x-text="x.text"></p>
+                                                                    <span class="rplus ease-in duration-300  text-6xl w-8 text-primary font-thin absolute leading-8 right-0 top-0">+</span>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                                <div class="swiper-interactive flex items-center justify-between mt-16">
+                                                    <div class="swiper-pagination"></div>
+                                                    <div class="ml-auto">
+                                                        <div class="swiper-navigation w-48 md:w-80 flex items-center justify-between gap-6">
+                                                            <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary wow animate__fadeInUp">prev</div>
+                                                            <div class="flex-1 mt-1">
+                                                                <span class="border-t border-white/20 wow animate__widthIn block" data-wow-delay=".5s"></span>
+                                                            </div>
+                                                            <div class="swiper-button swiper-button-next text-white hover:text-primary wow animate__fadeInUp" data-wow-delay="1s">next</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <img class="ornament absolute bottom-0 -right-32 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament4.png" width="600" height="400">
+                    </div>
+                </section>
+
+                <!--section.client-->
+                <section class="section section--client bg-white text-black" 
+                    x-data="{
+                        filters: {
+                            nav: [
+                                {
+                                    name: 'Startup',
+                                    group: 'startup'
+                                }, 
+                                {
+                                    name: 'IT & Telecommunication',
+                                    group: 'IT'
+                                }, 
+                                {
+                                    name:'Finance',
+                                    group: 'finance'
+                                },
+                                {
+                                    name: 'Brands',
+                                    group: 'brands'
+                                }, 
+                                {
+                                    name: 'Agency',
+                                    group: 'agency'
+                                }, 
+                            ],
+                            products:[
+                                {
+                                    id: 1, 
+                                    name: 'Grab',
+                                    img: 'assets/clients/logo_grap.png',
+                                    group: 'startup',
+                                    stuff: {
+                                        tabs: [
+                                            {
+                                                id: 'tab1',
+                                                nav: 'Monster 1',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image2.jpg']
+                                            },
+                                        ],
+                                    } 
+                                },
+                                {
+                                    id: 2, 
+                                    name: 'Gojek',
+                                    img: 'assets/clients/logo_gojek.png',
+                                    group: 'startup',  
+                                    stuff: {
+                                        tabs: [
+                                            {
+                                                id: 'tab1',
+                                                nav: 'Monster 1',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                        ],
+                                    } 
+                                },
+                                {
+                                    id: 3, 
+                                    name: 'Telkomsel',
+                                    img: 'assets/clients/logo_telkomsel.png',
+                                    group: 'IT',  
+                                    stuff: {
+                                        tabs: [
+                                            {
+                                                id: 'tab1',
+                                                nav: 'Monster 2',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                            {
+                                                id: 'tab2',
+                                                nav: 'Monster 3',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: 4, 
+                                    name: 'Telkom',
+                                    img: 'assets/clients/logo_telkom.png',
+                                    group: 'IT',  
+                                    stuff: {
+                                        tabs: [
+                                            {
+                                                id: 'tab1',
+                                                nav: 'Monster 5',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                            {
+                                                id: 'tab2',
+                                                nav: 'Monster o',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                        ],
+                                    }
+                                },
+                                {
+                                    id: 5, 
+                                    name: 'BCA',
+                                    img: 'assets/clients/logo_bca.png',
+                                    group: 'finance',  
+                                    stuff: {
+                                        tabs: [
+                                            {
+                                                id: 'tab1',
+                                                nav: 'Monster Mac',
+                                                itemTitle: 'Pliko',
+                                                itemText: `As GoFood brand activation, we set up Slot Machine that would offer cool prizes. Its players would get coupons that can be exchanged with GoFood merchandises or discounts after collecting 3 same pictures.`,
+                                                slides: ['assets/image.jpg', 'assets/image.jpg']
+                                            },
+                                        ],
+                                    },
+                                },
+                                {
+                                    id: 6, 
+                                    name: '3',
+                                    img: 'assets/clients/logo_3.png',
+                                    group: 'IT',  
+                                },
+                                {
+                                    id: 7, 
+                                    name: 'Lakuemas',
+                                    img: 'assets/clients/logo_lakuemas.png',
+                                    group: 'agency',  
+                                },
+                                {
+                                    id: 8, 
+                                    name: 'Exlayer',
+                                    img: 'assets/clients/logo_exlayer.png',
+                                    group: 'agency',  
+                                },
+                                {
+                                    id: 9, 
+                                    name: 'Adira',
+                                    img: 'assets/clients/logo_adir.png',
+                                    group: 'IT',  
+                                },
+                                {
+                                    id: 10, 
+                                    name: 'Mandiri',
+                                    img: 'assets/clients/logo_mandiri.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 11, 
+                                    name: 'Bank Indonesia',
+                                    img: 'assets/clients/log_BI.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 12, 
+                                    name: 'MNC Finance',
+                                    img: 'assets/clients/logo_mnc.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 13, 
+                                    name: 'Tiket.com',
+                                    img: 'assets/clients/logo_tiket.png',
+                                    group: 'brands',  
+                                },
+                                {
+                                    id: 14, 
+                                    name: 'Mandiri',
+                                    img: 'assets/clients/logo_mandiri.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 15, 
+                                    name: 'XL',
+                                    img: 'assets/clients/logo_xl.png',
+                                    group: 'IT',  
+                                },
+                                {
+                                    id: 16, 
+                                    name: 'BCA',
+                                    img: 'assets/clients/logo_bca.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 17, 
+                                    name: 'Exlayer',
+                                    img: 'assets/clients/logo_exlayer.png',
+                                    group: 'agency',  
+                                },
+                                {
+                                    id: 18, 
+                                    name: 'Adira',
+                                    img: 'assets/clients/logo_adir.png',
+                                    group: 'IT',  
+                                },
+                                {
+                                    id: 19, 
+                                    name: 'MNC Finance',
+                                    img: 'assets/clients/logo_mnc.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 20, 
+                                    name: 'Grab',
+                                    img: 'assets/clients/logo_grap.png',
+                                    group: 'startup',
+                                },
+                                {
+                                    id: 21, 
+                                    name: 'Tiket.com',
+                                    img: 'assets/clients/logo_tiket.png',
+                                    group: 'brands',  
+                                },
+                                {
+                                    id: 22, 
+                                    name: 'Lakuemas',
+                                    img: 'assets/clients/logo_lakuemas.png',
+                                    group: 'agency',  
+                                },
+                                {
+                                    id: 23, 
+                                    name: 'Bank Indonesia',
+                                    img: 'assets/clients/log_BI.png',
+                                    group: 'finance',  
+                                },
+                                {
+                                    id: 24, 
+                                    name: 'XL',
+                                    img: 'assets/clients/logo_xl.png',
+                                    group: 'IT',   
+                                },
+                                {
+                                    id: 25, 
+                                    name: 'Grab',
+                                    img: 'assets/clients/logo_grap.png',
+                                    group: 'startup',
+                                },
+                                {
+                                    id: 26, 
+                                    name: 'Tiket.com',
+                                    img: 'assets/clients/logo_tiket.png',
+                                    group: 'brands',  
+                                },
+                                {
+                                    id: 27, 
+                                    name: 'Lakuemas',
+                                    img: 'assets/clients/logo_lakuemas.png',
+                                    group: 'agency',  
+                                },
+                            ]
+                        }
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute top-20 -left-32 pointer-events-none max-w-full w-auto h-auto object-contain z-auto" src="assets/ornament3.png" width="600" height="400">
+                        <div class="flex flex-col md:flex-row justify-between relative z-10" x-data="{clientcount : 0}" x-model="filterModalTabs">
+                            <h1 class="section-title  mb-12 md:-mt-4 md:w-44 wow animate__fadeInUp"> 
+                                <span class="text-9xl font-semibold block text-primary" x-text="clientcount"></span>
+                                <small class="text-3xl font-playfair block leading-normal">Our <br class="hidden md:block">Supported<br> Clients.</small></h1>
+                            </h1>
+                            <div class="section-body flex-1 md:pl-16 md:overflow-hidden">
+                                <div class="tab wow animate__fadeInUp" data-wow-delay=".8s">
+                                    <div class="tab-nav mb-12 -mx-4 md:mx-0">
+                                        <ul class="tab-nav-list list-none inline-flex items-center whitespace-nowrap gap-6 text-base md:text-sm text-black/50 overflow-x-auto w-full px-4 md:px-0">
+                                            <li class="tab-nav-list-item active"><a href="#" data-tab-open="all" class="block py-2">All</a></li>
+                                            <template x-for="filter in filters.nav" >
+                                                <li class="tab-nav-list-item">
+                                                    <a href="#" :data-tab-open="filter.group" class="block py-2" x-text="filter.name"></a>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="swiper section--client-swiper -mx-4 px-4 md:mx-0 md:px-0">
+                                            <div class="swiper-wrapper">
+                                                <template x-for="filter in filters.products">
+                                                    <div :id="filter.group" class="swiper-slide tab-content-item" x-effect="++clientcount">
+                                                        <template x-if="filter.stuff">
+                                                            <a href="#" class="block relative transition grayscale contrast-0 hover:filter-none" data-popup-open="client" @click="filterModalTabs = filter.stuff.tabs">
+                                                                <img class="w-full object-contain mx-auto" :src="filter.img" width="80" height="40" alt="logo"></span>
+                                                                <span class="rplus ease-in duration-300  text-6xl text-primary font-thin absolute leading-8 right-0 top-0 ">+</span>
+                                                            </a>
+                                                        </template>
+                                                        <template x-if="!filter.stuff">
+                                                            <a href="#" class="block relative transition grayscale contrast-0 pointer-events-none">
+                                                                <img class="w-full object-contain mx-auto" :src="filter.img" width="80" height="40" alt="logo"></span>
+                                                            </a>
+                                                        </template>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                            <div class="swiper-interactive flex justify-between mt-16">
+                                                <div class="ml-auto">
+                                                    <div class="swiper-navigation w-48 md:w-80 flex items-center justify-between gap-6">
+                                                        <div class="swiper-button text-inherit swiper-button-prev text-sm hover:text-primary wow animate__fadeInUp">prev</div>
+                                                        <div class="flex-1 mt-1">
+                                                            <span class="border-t border-inherit wow animate__widthIn block" data-wow-delay=".5s"></span>
+                                                        </div>
+                                                        <div class="swiper-button text-inherit swiper-button-next hover:text-primary wow animate__fadeInUp" data-wow-delay="1s">next</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--section--news-->
+                <section id="news" class="section section--news bg-white text-black" 
+                    x-data="{
+                        articles: [
+                            {
+                                link: '/',
+                                img: 'assets/image5.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image6.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                            {
+                                link: '/',
+                                img: 'assets/image7.jpg',
+                                title: `Finnaly! Our new website is up and running`,
+                            },
+                        ]
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32 relative">
+                        <h1 class="section-title text-5xl font-semibold font-playfair mb-12 xl:absolute xl:top-0 xl:right-0 xl:rotate-90 xl:origin-top-left xl:-mr-24 xl:mt-20"><span class="wow animate__fadeInUp">News</span></h1>
+                        <div class="section-body wow animate__fadeInUp" data-wow-delay=".5s">
+                            <div class="grid md:grid-cols-3 gap-12">
+                                <template x-for="x in articles">
+                                    <article class="articles">
+                                        <a :href="x.link" class="item flex flex-col">
+                                            <span class="item-img block"><span class="relative aspect-[3/2] rounded-lg overflow-hidden block w-full"><img class="absolute left-0 top-0 w-full h-full object-cover transition" :src="x.img" width="200" height="112" alt="image"></span></span>
+                                            <figcaption class="item-desc flex-1 pt-6">
+                                                <h1 class="item-desc-title text-lg xl:text-2xl font-semibold mb-2 font-playfair" x-text="x.title"></h1>
+                                                <span class="item-desc-read flex items-center text-sm mt-6">READ THIS <i class="icon icon-xs icon-chevright ml-4"></i></span>
+                                            </figcaption>
+                                        </a>
+                                    </article>
+                                </template>
+                            </div>
+                            <a class="btn btn-outline w-32 h-10 text-sm mt-12 px-2 border ml-auto shadow-black wow animate__fadeInLeft" data-wow-delay="1s" href="news.html">See all <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                        </div>
+                    </div>
+                </section>
+
+                <!--section.contact-->
+                <section id="contact" class="section section--contact">
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute -top-40 -left-64 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <h1 class="section-title font-semibold text-5xl mb-16"><small class="block font-normal text-sm mb-4 text-primary">/ Contact</small>Get in touch.</h1>
+                        <div class="section-body">
+                            <div class="flex flex-col gap-24 md:flex-row">
+                                <div class="flex-item flex-1">
+                                    <form class="form ">
+                                        <div class="flex flex-col gap-12 mb-12 md:flex-row">
+                                            <div class="form-group flex-1">
+                                                <div class="input">
+                                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                                    <label class="input-label text-white/50"><span class="input-label-name">fullname.</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group flex-1">
+                                                <div class="input">
+                                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                                    <label class="input-label text-white/50"><span class="input-label-name">email.</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-12 mb-12 md:flex-row">
+                                            <div class="form-group flex-1">
+                                                <div class="input">
+                                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                                    <label class="input-label text-white/50"><span class="input-label-name">company name.</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group flex-1">
+                                                <div class="input">
+                                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                                    <label class="input-label text-white/50"><span class="input-label-name">phone number.</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-12 mb-12">
+                                            <div class="form-group flex-1">
+                                                <div class="input">
+                                                    <textarea type="textarea" rows="8" class="input-field border-neutral-800 pt-4" autocomplete="off" placeholder=""></textarea>
+                                                    <label class="input-label text-white/50"><span class="input-label-name">Tell us something ....</span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end">
+                                            <a class="btn btn-normal text-sm h-10 pl-8 hover:pr-8" href="/">Send Message <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="flex-item flex-1 overflow-hidden">
+                                    <div class="swiper section--contact-swiper" x-data="{
+                                         locations: [
+                                             {
+                                                 city: 'Jakarta',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Singapore',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Cambodia',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             }
+                                         ]
+                                     
+                                     }">
+                                         <div class="swiper-wrapper">
+                                             <template x-for="x in locations">
+                                                 <div class="swiper-slide">
+                                                     <div class="address">
+                                                         <p class="address-text">
+                                                             <span class="text-xl font-semibold block mb-2" x-text="x.city"></span> 
+                                                             <span class="text-sm block" x-html="x.detail"></span>
+                                                         </p>
+                                                     </div>
+                                                 </div>
+                                             </template>
+                                         </div>
+                                         <div class="swiper-interactive flex justify-between items-center mt-8">
+                                             <div class="swiper-link">
+                                                 <a class="btn btn-outline  w-32 h-10 text-xs px-2 border shadow-white ml-2 mb-2" href="contact.html">see on maps  <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                             </div>
+                                             <div class="swiper-navigation flex items-center justify-between gap-6  h-10">
+                                                 <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary"> <i class="icon icon-xs icon-chevleft ml-2"></i></div>
+                                                 <div class="swiper-button swiper-button-next text-white hover:text-primary"> <i class="icon icon-xs icon-chevright ml-2"></i> </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+                        <img class="ornament absolute -bottom-44 -right-12 pointer-events-none max-w-full h-auto object-contain opacity-30" src="assets/ornament2.png" width="300" height="300">
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <!--footer-->
+        <footer class="footer">
+            <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                <div class="footer-bottom flex flex-col md:flex-row md:justify-between md:items-end gap-8">
+                    <div class="footer-bottom-right md:mb-0 md:order-last">
+                        <ul class="nav flex flex-wrap w-5/6 md:w-full list-none gap-2">
+                            <li class="nav-item active"><a href="#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                            <li class="nav-item"><a href="#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                            <li class="nav-item"><a href="#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                            <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                            <li class="nav-item"><a href="#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                            <li class="nav-item"><a href="#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom-left">
+                        <ul class="footer-socmed flex list-none mb-4 gap-2">
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-linkedin'></i></a></li>
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-facebook' ></i></a></li>
+                        </ul>
+                        <span class="footer-copyright">MonsterGroup 2020, Co. © 2021. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--modal-->
+        <div class="modal fixed top-0 left-0 w-full h-full overflow-x-hidden  overflow-y-auto z-40 bg-black/60 text-black">
+            <div class="modal-inner flex items-center justify-center min-h-full py-12 px-4">
+                <div class="modal-inner-box max-w-3xl flex-1 bg-white relative">
+                    <a href="#" class="modal-close w-8 h-8 text-2xl -mt-10 absolute right-0"><img class="w-full h-full" src="assets/close.png" width="32" height="32"></a>
+
+                    <!--popup.About-->
+                    <iframe id="about" class="max-w-3xl w-full h-full aspect-video modal-item hidden" width="1189" height="669" src="https://www.youtube.com/embed/foBYCWruUFc?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <!--popup.Client-->
+                    <div id="client" class="modal-item hidden">
+                        <div class="tab" x-data="{activeTab: 'tab1'}">
+                            <div class="tab-nav border-b px-4 md:px-10">
+                                <ul class="tab-nav-list list-none inline-flex items-center gap-6">
+                                    <template x-for="tab in filterModalTabs">
+                                        <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(tab.id)}">
+                                            <a href="#" :data-tab-open="tab.id" class="flex items-center h-16" x-text="tab.nav"></a>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                            <div class="tab-content p-4 md:p-10 md:pt-6">
+                                <template x-for="tab in filterModalTabs">
+                                    <div :id="tab.id" class="tab-content-item" :class="{'hidden': !getActiveStatus(tab.id)}">
+                                        <h1 class="font-semibold font-playfair text-4xl mb-4" x-text="tab.itemTitle"></h1>
+                                        <p class="mb-6" x-html="tab.itemText"></p>
+                                        <div class="swiper modal-swiper">
+                                            <div class="swiper-wrapper">
+                                                <template x-for="slide in tab.slides">
+                                                    <div class="swiper-slide">
+                                                        <img class="w-full h-96 object-cover" :src="slide" width="900" height="600" alt="img">
+                                                    </div>
+                                                </template>
+                                            </div>
+                                            <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary"> <i class="icon icon-chevleft ml-2"></i></div>
+                                            <div class="swiper-button swiper-button-next text-white hover:text-primary"> <i class="icon icon-chevright ml-2"></i> </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" defer></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MonsterGroup</title>
+        <meta name="description" content="Monstergroup" />
+        <meta name="keywords" content="Monstergroup" />
+        <meta http-equiv="cache-control" content="public, no-transform" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="canonical" href="/" />
+        <link rel="preconnect" href="https://place-hold.it/" crossorigin="anonymous" />
+
+        <!--fontface.css-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
+
+        <!--monstergroup.css-->
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+        <link rel="stylesheet" href="css/all.min.css" />
+    </head>
+    <body class="bg-black text-white overflow-x-hidden" :class="[menubar ? 'overflow-hidden' : '']" 
+        x-data="{
+            menubar: false, 
+            filterModalTabs: [],
+            getActiveStatus(id) {
+                return id === this.activeTab
+            }
+        }"
+    >
+        <!--loading-->
+        <div class="loading w-full h-full fixed top-0 left-0 z-50 animate__hidden" style="--timer: 1s;">
+            <div class="loading-bg bg-black w-full h-full absolute top-0 left-0 animate__bgLeft"></div>
+            <div class="loading-body relative z-10 flex items-center justify-center min-h-full flex-col animate__hidden">
+                <img class="loading-logo object-contain mt-4" src="assets/logo.png" width="160" height="65">
+                <span class="loading-bar rounded-full block w-20 h-0.5  bg-grey relative mt-4 overflow-hidden"><span class="loading-bar-inner animate__progress absolute top-0 left-0 w-full h-full bg-primary"></span>
+            </div>
+        </div>
+        
+        <!--header-->
+        <header class="header fixed top-0 inset-x-0 z-40 bg-gradient-to-t from-transparent to-black/80">
+            <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 xl:px-32">
+                <div class="header-body flex items-center justify-between h-20 gap-4">
+                    <div class="header-left"><a href="/" class="logo"><img class="object-contain -ml-2 mt-4" src="assets/logo.png" width="160" height="65"></a></div>
+                    <div class="header-right">
+                        <button class="header-btn header-btn--menu hamburger h-20 px-4 -mr-4 relative z-30 block md:hidden" @click="menubar =! menubar" :class="[menubar ? 'collapsed' : '']" type="button" name="btn-menubar" aria-label="btn-menubar">
+                            <span class="hamburger-icon"><span class="hamburger-icon-inner"></span></span>
+                        </button>
+                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent" :class="[menubar ? 'open' : '']">
+                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
+                                <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
+                                    <li class="nav-item"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                                    <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                                    <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                                    <li class="nav-item active"><a href="career.html" class="nav-item-link">Careers</a></li>
+                                    <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                                    <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                                </ul>
+                                <div class="address flex gap-4 items-start justify-between md:hidden">
+                                    <p class="address-text">
+                                        <span class="text-lg font-semibold block">JAKARTA</span> 
+                                        <span class="text-xs block">
+                                            Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                            Jakarta Barat, DKI Jakarta - 11430,<br>
+                                            Indonesia
+                                        </span>
+                                    </p>
+                                    <a class="btn btn-outline  w-32 h-10 text-xs px-2 border shadow-white" href="/">see on maps <i class="icon icon-xs icon-chevright ml-2"></i> </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--main-->
+        <main class="main">
+            <div class="main-body">
+                
+                <!--section.header-->
+                <section class="section section--header">
+                    <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 py-20 pt-32 flex flex-col justify-center h-full xl:px-32">
+                        <img class="ornament absolute top-20 -left-32 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <div class="section-body">
+                            <h1 class="section-breadcrumb text-sm mb-6 text-primary wow animate__fadeInUp">/ Careers</h1>
+                            <p class="section-lead text-2xl md:text-4xl font-semibold leading-relaxed mb-6 wow animate__fadeInUp" data-wow-delay=".8s">
+                                We’re not hiring an employee. We develop a future leader. <br>Let’s Grow Together!
+                            </p>
+                            <a class="section-scrolldown block font-playfair mb-8 wow animate__fadeInUp" data-wow-delay="1s" href="#career" data-toggle="menuspy"> <span class="section-scrolldown-text text-primary text-xs wow animate__fadeInDown">scroll down</span> </a>
+                            <figure class="section--header-img -ml-4 -mb-40 xl:-ml-32">
+                                <img class="h-full object-cover  parallax" src="assets/imageCareer.jpg" width="1280" height="720">
+                            </figure>
+                        </div> 
+                        <img class="ornament absolute bottom-0 -right-32 pointer-events-none max-w-full h-auto object-contain opacity-30 z-auto" src="assets/ornament2.png" width="300" height="300">                
+                    </div>
+                </section>
+
+                <!--section.careers-->
+                <section id="career" class="section section--career bg-white text-black"
+                    x-data="{
+                        careers: [
+                            {
+                                number: '01',
+                                title: 'Front End Developer',
+                                desc: 'Fulltime - Jakarta, Indonesia',
+                                jobs: [
+                                   'Intermediate to advanced skills in 3DS Max or Maya, and Photoshop. ZBrush, Substance, V-ray/Arnold are a plus',
+                                   'Attention to detail in all aspects of UV Mapping, textures, and lookdev',
+                                   'Understanding of shape, structure and silhouette in regard to composition',
+                                   'An eye for color, contrast, value, detail and good lighting principles when creating textures and materials',
+                                   'Online portfolio consisting of current personal and recent professional work',
+                                   'Be able to adapt to stylistic guidelines set by the Lead Artist and Art Directors, and work in an iterative environment',
+                                   'Organic and hard-surface modelling/lighting/FX',
+                                   'Must be able to work in a collaborative and team based environment',
+                                   'Excellent time management skills and ability to meet team deadlines',
+                                   'Strong passion for gaming is a huge plus'
+                                ],
+                                skills: [
+                                    '3DS Max/Maya',
+                                    'ZBrush',
+                                    'Substance',
+                                    'V-Ray',
+                                    'Arnold',
+                                    'Photoshop'
+                                ]
+                            },
+                            {
+                                number: '02',
+                                title: 'PHP Developer',
+                                desc: 'Fulltime - Jakarta, Indonesia',
+                                jobs: [
+                                   'Intermediate to advanced skills in 3DS Max or Maya, and Photoshop. ZBrush, Substance, V-ray/Arnold are a plus',
+                                   'Attention to detail in all aspects of UV Mapping, textures, and lookdev',
+                                   'Understanding of shape, structure and silhouette in regard to composition',
+                                   'An eye for color, contrast, value, detail and good lighting principles when creating textures and materials',
+                                   'Online portfolio consisting of current personal and recent professional work',
+                                   'Be able to adapt to stylistic guidelines set by the Lead Artist and Art Directors, and work in an iterative environment',
+                                   'Organic and hard-surface modelling/lighting/FX',
+                                   'Must be able to work in a collaborative and team based environment',
+                                   'Excellent time management skills and ability to meet team deadlines',
+                                   'Strong passion for gaming is a huge plus'
+                                ],
+                                skills: [
+                                    '3DS Max/Maya',
+                                    'ZBrush',
+                                    'Substance',
+                                    'V-Ray',
+                                    'Arnold',
+                                    'Photoshop'
+                                ]
+                            },
+                            {
+                                number: '03',
+                                title: '3D Generalist',
+                                desc: 'Fulltime - Jakarta, Indonesia',
+                                jobs: [
+                                   'Intermediate to advanced skills in 3DS Max or Maya, and Photoshop. ZBrush, Substance, V-ray/Arnold are a plus',
+                                   'Attention to detail in all aspects of UV Mapping, textures, and lookdev',
+                                   'Understanding of shape, structure and silhouette in regard to composition',
+                                   'An eye for color, contrast, value, detail and good lighting principles when creating textures and materials',
+                                   'Online portfolio consisting of current personal and recent professional work',
+                                   'Be able to adapt to stylistic guidelines set by the Lead Artist and Art Directors, and work in an iterative environment',
+                                   'Organic and hard-surface modelling/lighting/FX',
+                                   'Must be able to work in a collaborative and team based environment',
+                                   'Excellent time management skills and ability to meet team deadlines',
+                                   'Strong passion for gaming is a huge plus'
+                                ],
+                                skills: [
+                                    '3DS Max/Maya',
+                                    'ZBrush',
+                                    'Substance',
+                                    'V-Ray',
+                                    'Arnold',
+                                    'Photoshop'
+                                ]
+                            },
+                            {
+                                number: '04',
+                                title: '3D Generalist',
+                                desc: 'Fulltime - Jakarta, Indonesia',
+                                jobs: [
+                                   'Intermediate to advanced skills in 3DS Max or Maya, and Photoshop. ZBrush, Substance, V-ray/Arnold are a plus',
+                                   'Attention to detail in all aspects of UV Mapping, textures, and lookdev',
+                                   'Understanding of shape, structure and silhouette in regard to composition',
+                                   'An eye for color, contrast, value, detail and good lighting principles when creating textures and materials',
+                                   'Online portfolio consisting of current personal and recent professional work',
+                                   'Be able to adapt to stylistic guidelines set by the Lead Artist and Art Directors, and work in an iterative environment',
+                                   'Organic and hard-surface modelling/lighting/FX',
+                                   'Must be able to work in a collaborative and team based environment',
+                                   'Excellent time management skills and ability to meet team deadlines',
+                                   'Strong passion for gaming is a huge plus'
+                                ],
+                                skills: [
+                                    '3DS Max/Maya',
+                                    'ZBrush',
+                                    'Substance',
+                                    'V-Ray',
+                                    'Arnold',
+                                    'Photoshop'
+                                ]
+                            },
+                            {
+                                number: '05',
+                                title: '3D Generalist',
+                                desc: 'Fulltime - Jakarta, Indonesia',
+                                jobs: [
+                                   'Intermediate to advanced skills in 3DS Max or Maya, and Photoshop. ZBrush, Substance, V-ray/Arnold are a plus',
+                                   'Attention to detail in all aspects of UV Mapping, textures, and lookdev',
+                                   'Understanding of shape, structure and silhouette in regard to composition',
+                                   'An eye for color, contrast, value, detail and good lighting principles when creating textures and materials',
+                                   'Online portfolio consisting of current personal and recent professional work',
+                                   'Be able to adapt to stylistic guidelines set by the Lead Artist and Art Directors, and work in an iterative environment',
+                                   'Organic and hard-surface modelling/lighting/FX',
+                                   'Must be able to work in a collaborative and team based environment',
+                                   'Excellent time management skills and ability to meet team deadlines',
+                                   'Strong passion for gaming is a huge plus'
+                                ],
+                                skills: [
+                                    '3DS Max/Maya',
+                                    'ZBrush',
+                                    'Substance',
+                                    'V-Ray',
+                                    'Arnold',
+                                    'Photoshop'
+                                ]
+                            }
+                        ]
+                    }"
+                >
+                    <div class="container relative mx-auto px-4 py-40 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <div class="section-body max-w-screen-md mx-auto">
+                            <ul class="section--career-list list-none wow animate__fadeInUp" data-wow-delay="1s">
+                                <template x-for="x in careers">
+                                    <li class="collapse section--career-list-item border-b">
+                                        <h1 class="collapse-header font-playfair text-xl md:text-3xl font-semibold">
+                                            <a class="collapse-link flex items-start justify-between py-6 md:py-8" href="#">
+                                                <span class="number w-6 text-primary font-thin text-xs" x-text="`${x.number}.`"></span>
+                                                <span class="flex-1 px-4 -mt-1">
+                                                    <span x-text="x.title"></span> 
+                                                    <small class="block text-gray-400 font-primary font-normal text-xs" x-text="x.desc"></small>
+                                                </span>
+                                                <span class="rplus ease-in duration-300 text-4xl -mt-1 leading-none text-primary font-thin"></span>
+                                            </a>
+                                        </h1>
+                                        <div class="collapse-body pl-5 md:pl-10 pb-10">
+                                            <div class="collapse-box">
+                                                <h2 class="collapse-title font-playfair font-semibold text-lg md:text-xl mb-4">What are we looking for:</h2>
+                                                <ol class="collapse-list list-disc px-4 flex flex-col gap-2 leading-relaxed">
+                                                    <template x-for="list in x.jobs">
+                                                        <li x-text="list"></li>
+                                                    </template>
+                                                </ol>
+                                            </div>
+                                            <div class="collapse-box">
+                                                <h2 class="collapse-title font-playfair font-semibold text-xl mb-4">Skills Requirements:</h2>
+                                                <ol class="collapse-list list-none flex gap-2 flex-wrap whitespace-nowrap">
+                                                    <template x-for="list in x.skills">
+                                                        <li class="border px-4 py-2" x-text="list"></li>
+                                                    </template>
+                                                </ol>
+                                            </div>
+                                            <div class="collapse-box">
+                                                <h3 class="collapse-title font-semibold mb-2">Please use this format for subject email :</h3>
+                                                <div class="collapse-dt flex justify-between items-center">
+                                                    <div class="flex-item text-xs md:text-base">
+                                                        Apply <i>[Title/Location]</i><br>
+                                                        Ex : Apply <i>[Mobile Developer/Solo]</i>
+                                                    </div>
+                                                    <div class="flex-item">
+                                                        <a class="btn btn-outline w-32 h-10 text-sm px-2 border border-black bg-black text-white shadow-black/50 hover:shadow-white wow animate__fadeInLeft" data-wow-delay="1s"  data-popup-open="apply"  href="#">Apply Now <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <!--section.contact-->
+                <section class="section section--contact">
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute -top-40 -left-64 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <h1 class="section-title font-semibold text-5xl mb-16">
+                            <small class="block font-normal text-sm mb-6 text-primary">/ Contact</small>
+                            <a href="/" class="letstalk inline-block relative">
+                                Let's Talk. <span class="rplus ease-in duration-300 text-9xl leading-none text-primary font-thin absolute leading-8 -right-8 top-2">+</span>
+                            </a>
+                        </h1>
+                        <div class="section-body">
+                            <div class="flex flex-col gap-24 md:flex-row">
+                                <div class="flex-item flex-1 overflow-hidden">
+                                    <div class="swiper section--contact-swiper" x-data="{
+                                         locations: [
+                                             {
+                                                 city: 'Jakarta',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Singapore',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             },
+                                             {
+                                                 city: 'Cambodia',
+                                                 detail: `Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                                 Jakarta Barat, DKI Jakarta - 11430,<br>
+                                                 Indonesia`
+                                             }
+                                         ]
+                                     
+                                     }">
+                                         <div class="swiper-wrapper">
+                                             <template x-for="x in locations">
+                                                 <div class="swiper-slide">
+                                                     <div class="address">
+                                                         <p class="address-text">
+                                                             <span class="text-xl font-semibold block mb-2" x-text="x.city"></span> 
+                                                             <span class="text-sm block" x-html="x.detail"></span>
+                                                         </p>
+                                                     </div>
+                                                 </div>
+                                             </template>
+                                         </div>
+                                         <div class="swiper-interactive flex justify-between items-center mt-8">
+                                             <div class="swiper-link md:hidden">
+                                                 <a class="btn btn-outline w-32 h-10 text-xs px-2 border shadow-white ml-2 mb-2" href="/">see on maps <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                             </div>
+                                             <div class="swiper-navigation flex items-center justify-between gap-6 h-10">
+                                                 <div class="swiper-button swiper-button-prev text-sm text-white hover:text-primary"> <i class="icon icon-xs icon-chevleft ml-2"></i></div>
+                                                 <div class="swiper-button swiper-button-next text-white hover:text-primary"> <i class="icon icon-xs icon-chevright ml-2"></i> </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="flex-item flex-1 hidden md:block">
+                                    <a class="btn btn-outline w-32 h-10 text-sm px-2 border shadow-white ml-2 mb-2" href="/">see on maps <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                </div>
+                            </div>
+                        </div>
+                        <img class="ornament absolute -bottom-44 -right-12 pointer-events-none max-w-full h-auto object-contain opacity-30" src="assets/ornament2.png" width="300" height="300">
+                    </div>
+                    
+                </section>
+
+            </div>
+        </main>
+        
+        <!--footer-->
+        <footer class="footer">
+            <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                <div class="footer-bottom flex flex-col md:flex-row md:justify-between md:items-end gap-8">
+                    <div class="footer-bottom-right md:mb-0 md:order-last">
+                        <ul class="nav flex flex-wrap w-5/6 md:w-full list-none gap-2">
+                            <li class="nav-item active"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                            <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                            <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                            <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                            <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                            <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom-left">
+                        <ul class="footer-socmed flex list-none mb-4 gap-2">
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-linkedin'></i></a></li>
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-facebook' ></i></a></li>
+                        </ul>
+                        <span class="footer-copyright">MonsterGroup 2020, Co. © 2021. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!--modal-->
+        <div class="modal modal-apply fixed top-0 left-0 w-full h-full overflow-x-hidden overflow-y-auto z-40 bg-black/60 text-black">
+            <div class="modal-inner flex justify-end min-h-full">
+                <div class="modal-inner-box max-w-3xl flex-1 bg-black text-white relative pl-10 p-20">
+                    <a href="#" class="modal-close w-8 h-8 text-2xl absolute top-5 right-5"><img class="w-full h-full" src="assets/close.png" width="32" height="32"></a>
+                    <form id="apply" class="form">
+                        <h1 class="form-title text-3xl font-semibold mb-12">Application Form</h1>
+                        <div class="form-body">
+                            <div class="form-group mb-12">
+                                <div class="input">
+                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                    <label class="input-label text-white/50"><span class="input-label-name">Email. <span class="important">*</span></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <div class="input">
+                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                    <label class="input-label text-white/50"><span class="input-label-name">Fulname. <span class="important">*</span></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <div class="input">
+                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                    <label class="input-label text-white/50"><span class="input-label-name">Phone Number. <span class="important">*</span></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <label class="form-label text-primary text-sm block mb-4">Total year(s) of experience</label>
+                                <div class="form-group-flex flex gap-4">
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="exp">
+                                        <label class="input-radio-label">Fresh Graduate</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="exp">
+                                        <label class="input-radio-label">1-2 years</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="exp">
+                                        <label class="input-radio-label">6-9 years</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="exp">
+                                        <label class="input-radio-label">>10 years</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <label class="form-label text-primary text-sm block mb-4">Last Education <small class="block text-white/40 text-xs">Please state your latest educational background</small></label>
+                                <div class="form-group flex gap-4">
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="edu">
+                                        <label class="input-radio-label">High School (SMA/SMK)</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="edu">
+                                        <label class="input-radio-label">Bachelor's (S1)</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="edu">
+                                        <label class="input-radio-label">Master's (S2)</label>
+                                    </div>
+                                    <div class="input-radio">
+                                        <input class="input-radio-control" type="radio" name="edu">
+                                        <label class="input-radio-label">Doctorates</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <label class="form-label text-primary text-sm block mb-4">Position <span class="important text-red-500">*</small></label>
+                                <div class="form-group">
+                                    <select class="input-select">
+                                        <option>UI/UX Designer</option>
+                                        <option>3D Generalist</option>
+                                        <option>PHP Developer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <label class="form-label text-primary text-sm block mb-4">Submit your CV here<span class="important text-red-500">*</small></label>
+                                <div class="form-group">
+                                    <label for="file-upload" class="custom-file-upload inline-flex items-center px-4 py-2 border cursor-pointer">
+                                        <i class='bx bx-sm bx-upload mr-2'></i> Add File
+                                    </label>
+                                    <input id="file-upload" type="file" class="hidden">
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <div class="input">
+                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                    <label class="input-label text-white/50"><span class="input-label-name">LinkedIn Profile's Link.</span></label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-12">
+                                <div class="input">
+                                    <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                    <label class="input-label text-white/50"><span class="input-label-name">Support link (Github, Portfolio, etc) - If any</span></label>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <a class="btn btn-outline w-44 h-10 text-sm border shadow-white" href="/">Submit Form <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" defer></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+    </body>
+</html>

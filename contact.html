@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MonsterGroup</title>
+        <meta name="description" content="Monstergroup" />
+        <meta name="keywords" content="Monstergroup" />
+        <meta http-equiv="cache-control" content="public, no-transform" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="canonical" href="/" />
+        <link rel="preconnect" href="https://place-hold.it/" crossorigin="anonymous" />
+
+        <!--fontface.css-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
+
+        <!--monstergroup.css-->
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+        <link rel="stylesheet" href="css/all.min.css" />
+    </head>
+    <body class="bg-black text-white overflow-x-hidden" :class="[menubar ? 'overflow-hidden' : '']" 
+        x-data="{
+            menubar: false, 
+            filterModalTabs: [],
+            getActiveStatus(id) {
+                return id === this.activeTab
+            }
+        }"
+    >
+        <!--loading-->
+        <div class="loading w-full h-full fixed top-0 left-0 z-50 animate__hidden" style="--timer: 1s;">
+            <div class="loading-bg bg-black w-full h-full absolute top-0 left-0 animate__bgLeft"></div>
+            <div class="loading-body relative z-10 flex items-center justify-center min-h-full flex-col animate__hidden">
+                <img class="loading-logo object-contain mt-4" src="assets/logo.png" width="160" height="65">
+                <span class="loading-bar rounded-full block w-20 h-0.5  bg-grey relative mt-4 overflow-hidden"><span class="loading-bar-inner animate__progress absolute top-0 left-0 w-full h-full bg-primary"></span>
+            </div>
+        </div>
+        
+        <!--header-->
+        <header class="header fixed top-0 inset-x-0 z-40 bg-gradient-to-t from-transparent to-black/80">
+            <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 xl:px-32">
+                <div class="header-body flex items-center justify-between h-20 gap-4">
+                    <div class="header-left"><a href="/" class="logo"><img class="object-contain -ml-2 mt-4" src="assets/logo.png" width="160" height="65"></a></div>
+                    <div class="header-right">
+                        <button class="header-btn header-btn--menu hamburger h-20 px-4 -mr-4 relative z-30 block md:hidden" @click="menubar =! menubar" :class="[menubar ? 'collapsed' : '']" type="button" name="btn-menubar" aria-label="btn-menubar">
+                            <span class="hamburger-icon"><span class="hamburger-icon-inner"></span></span>
+                        </button>
+                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent" :class="[menubar ? 'open' : '']">
+                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
+                                <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
+                                    <li class="nav-item"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                                    <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                                    <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                                    <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                                    <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                                    <li class="nav-item active"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                                </ul>
+                                <div class="address flex gap-4 items-start justify-between md:hidden">
+                                    <p class="address-text">
+                                        <span class="text-lg font-semibold block">JAKARTA</span> 
+                                        <span class="text-xs block">
+                                            Jl. Aren No. 29, Jati Pulo, Palmerah,<br>
+                                            Jakarta Barat, DKI Jakarta - 11430,<br>
+                                            Indonesia
+                                        </span>
+                                    </p>
+                                    <a class="btn btn-outline w-32 h-10 text-xs px-2 border shadow-white" href="/">see on maps <i class="icon icon-xs icon-chevright ml-2"></i> </a> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--main-->
+        <main class="main">
+            <div class="main-body">
+                
+                <!--section.header-->
+                <section class="section section--header">
+                    <div class="container relative max-w-full md:max-w-screen-2xl mx-auto px-4 py-20 pt-32 flex flex-col justify-center h-full xl:px-32">
+                        <img class="ornament absolute top-20 -left-32 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        <div class="section-body">
+                            <h1 class="section-breadcrumb text-sm mb-6 text-primary wow animate__fadeInUp">/ Contact</h1>
+                            <p class="section-lead text-2xl md:text-4xl font-semibold leading-relaxed mb-6 wow animate__fadeInUp" data-wow-delay=".8s">
+                                Please contact us if you have any questions regarding our services.
+                            </p>
+                            <a class="section-scrolldown block font-playfair mb-8 wow animate__fadeInUp" data-wow-delay="1s" href="#maps" data-toggle="menuspy"> <span class="section-scrolldown-text text-primary text-xs wow animate__fadeInDown">scroll down</span> </a>
+                            <div id="maps" class="section--header-maps -mx-4 -mb-20 xl:-mx-32" 
+                                x-data="{
+                                    maps: [
+                                        {
+                                            id: 'tab1',
+                                            country: 'Indonesia',
+                                            embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                            sub: [
+                                                {
+                                                    id: 'sub1',
+                                                    city: 'Jakarta',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        },
+                                                        {
+                                                            id: 'ad2',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        },
+                                                        {
+                                                            id: 'ad3',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        },
+                                                        {
+                                                            id: 'ad4',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        },
+                                                        {
+                                                            id: 'ad5',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        },
+                                                        {
+                                                            id: 'ad6',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    id: 'sub2',
+                                                    city: 'Surabaya',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    id: 'sub3',
+                                                    city: 'Solo',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    id: 'sub4',
+                                                    city: 'Medan',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            id: 'tab2',
+                                            country: 'United States',
+                                            embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                            sub: [
+                                                {
+                                                    id: 'sub1',
+                                                    city: 'California',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            id: 'tab3',
+                                            country: 'Cambodia',
+                                            embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                            sub: [
+                                                {
+                                                    id: 'sub1',
+                                                    city: 'Phnom Penh',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: 'https://maps.google.com/maps?q=Monster%20Group%20Surabaya&t=&z=13&ie=UTF8&iwloc=&output=embed',
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            id: 'tab4',
+                                            country: 'Vietnam',
+                                            embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                            sub: [
+                                                {
+                                                    id: 'sub1',
+                                                    city: 'Hanoi',
+                                                    embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                    address: [
+                                                        {
+                                                            id: 'ad1',
+                                                            title: `Jl. Aren No. 29, Jati Pulo, Palmerah<br> Jakarta Barat, DKI Jakarta - 11430`,
+                                                            embed: `https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed`,
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        } 
+
+                                    ]
+                                }"
+                            >
+                                <div class="tab tab--country" x-data="{activeTab: 'tab1'}">
+                                    <div class="tab-nav flex justify-center bg-neutral-900 text-lg">
+                                        <ul class="tab-nav-list list-none flex items-center whitespace-nowrap overflow-x-auto gap-2">
+                                            <template x-for="x in maps">
+                                                <li class="tab-nav-list-item" :class="{'active': getActiveStatus(x.id)}"><a href="#" :data-tab-open="x.id" :data-embed="x.embed" class="block p-4" x-text="x.country"></a></li>
+                                            </template>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content flex flex-col md:flex-row bg-white text-black">
+                                        <template x-for="x in maps">
+                                            <div :id="x.id" class="tab-content-item flex-item md:w-96" :class="{'hidden': !getActiveStatus(x.id)}">
+                                                <div class="tab tab--city flex flex-col h-full" x-data="{activeTab: 'sub1'}">
+                                                    <div class="tab-nav bg-neutral-200">
+                                                        <ul class="tab-nav-list list-none flex whitespace-nowrap overflow-x-auto p-4 gap-2 text-sm">
+                                                            <template x-for="sub in x.sub">
+                                                                <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(sub.id)}"><a href="#" :data-tab-open="sub.id" :data-embed="sub.embed" class="border border-black rounded-full block py-1 px-4" x-text="sub.city"></a></li>
+                                                            </template>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tab-content flex-1 flex flex-col justify-between">
+                                                        <template x-for="sub in x.sub">
+                                                            <div :id="sub.id" class="tab-content-item flex-1" :class="{'hidden': !getActiveStatus(sub.id)}">
+                                                                <ul class="tab--city-address list-none flex flex-col overflow-y-auto" style="max-height: 480px;" x-data="{activeTab: 'ad1'}">
+                                                                    <template x-for="address in sub.address">
+                                                                        <li class="tab--city-address-item border-b" :class="{'active': getActiveStatus(address.id)}">
+                                                                            <a href="#" :data-embed="address.embed" class="flex justify-between items-center py-6 px-4">
+                                                                                <i class='bx bxs-map'></i>
+                                                                                <p class="flex-1 px-4" x-html="address.title"></p>
+                                                                                <i class='bx bx-chevron-right'></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </template>
+                                                                </ul>
+                                                            </div>
+                                                        </template>
+                                                        <div class="info flex flex-col gap-4 px-4 py-6 text-primary text-base md:text-lg">
+                                                            <span class="flex items-center"><i class='bx bx-envelope mr-2'></i> email@monstegroup.co.id</span>
+                                                            <span class="flex items-center"><i class='bx bx-phone mr-2'></i> +44 (0) 207 729 3512</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                        <div class="flex-item flex-1">
+                                            <iframe class="maps w-full aspect-video h-full" width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <img class="ornament absolute bottom-0 -right-32 pointer-events-none max-w-full h-auto object-contain opacity-30 z-auto" src="assets/ornament2.png" width="300" height="300">                
+                    </div>
+                </section>
+                
+                <!--section.contact-->
+                <section class="section section--contact">
+                    <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                        <img class="ornament absolute -top-40 -left-64 pointer-events-none max-w-full w-auto h-auto object-contain" src="assets/ornament1.png" width="600" height="400">
+                        
+                        <h1 class="section-title font-semibold text-5xl mb-16 wow animate__fadeInUp">Get in touch.</h1>
+                        <div class="section-body wow animate__fadeInUp">
+                            <form class="form">
+                                <div class="flex flex-col gap-12 mb-12 md:flex-row">
+                                    <div class="form-group flex-1">
+                                        <div class="input">
+                                            <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                            <label class="input-label text-white/50"><span class="input-label-name">fullname.</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group flex-1">
+                                        <div class="input">
+                                            <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                            <label class="input-label text-white/50"><span class="input-label-name">email.</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-12 mb-12 md:flex-row">
+                                    <div class="form-group flex-1">
+                                        <div class="input">
+                                            <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                            <label class="input-label text-white/50"><span class="input-label-name">company name.</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group flex-1">
+                                        <div class="input">
+                                            <input type="text" class="input-field border-neutral-800" autocomplete="off" placeholder=""/>
+                                            <label class="input-label text-white/50"><span class="input-label-name">phone number.</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex gap-12 mb-12">
+                                    <div class="form-group flex-1">
+                                        <div class="input">
+                                            <textarea type="textarea" rows="8" class="input-field border-neutral-800 pt-4" autocomplete="off" placeholder=""></textarea>
+                                            <label class="input-label text-white/50"><span class="input-label-name">Tell us something ....</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <a class="btn btn-normal text-sm h-10 pl-8 hover:pr-8" href="/">Send Message <i class="icon icon-xs icon-chevright ml-4"></i></a> 
+                                </div>
+                            </form>
+                        </div>
+                        <img class="ornament absolute -bottom-44 -right-12 pointer-events-none max-w-full h-auto object-contain opacity-30" src="assets/ornament2.png" width="300" height="300">
+                    </div>
+                    
+                </section>
+
+            </div>
+        </main>
+        
+        <!--footer-->
+        <footer class="footer">
+            <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
+                <div class="footer-bottom flex flex-col md:flex-row md:justify-between md:items-end gap-8">
+                    <div class="footer-bottom-right md:mb-0 md:order-last">
+                        <ul class="nav flex flex-wrap w-5/6 md:w-full list-none gap-2">
+                            <li class="nav-item active"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                            <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                            <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
+                            <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
+                            <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                            <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-bottom-left">
+                        <ul class="footer-socmed flex list-none mb-4 gap-2">
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-linkedin'></i></a></li>
+                            <li class="footer-socmed-item"><a href="/" class="flex items-center justify-center bg-white text-black rounded-full w-8 h-8"><i class='bx bxl-facebook' ></i></a></li>
+                        </ul>
+                        <span class="footer-copyright">MonsterGroup 2020, Co. © 2021. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" defer></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+    </body>
+</html>
