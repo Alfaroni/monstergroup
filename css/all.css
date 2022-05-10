@@ -1,5 +1,5 @@
 /*! utilities */
-@import url(/Users/agnes/Documents/2022/MonsterGroup/default/css/animate.css);
+@import url("animate.css");
 :root {
   --color-white: #FFFFFF;
   --color-black: #000000;
