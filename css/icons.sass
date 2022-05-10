@@ -1,0 +1,45 @@
+.icon 
+    position: relative
+    display: inline-block
+    vertical-align: middle
+    &::after
+        content: ""
+        background-repeat: no-repeat
+        background-position: center 
+        background-size: contain
+        display: inline-block
+        vertical-align: middle
+        width: 12px
+        height: 12px
+    &-chevright,
+    &-chevleft
+        width: 40px
+        height: 12px
+        transition: .5s ease
+        &.icon
+            &-xs 
+                width: 20px
+                height: 8px
+                &::after 
+                    width: 8px
+                    height: 8px
+        &::before,
+        &::after
+            content: ""
+            position: absolute
+            border-top: 1px solid 
+        &::before
+            width: 100%
+            top: 50%
+            left: 0
+            margin-top: -.5px
+        &::after
+            top: 0
+            right: 1px
+            transform: rotate(45deg)
+            border-right: 1px solid 
+    &-chevleft
+        &::after
+            right: auto
+            left: 1px
+            transform: rotate(225deg)

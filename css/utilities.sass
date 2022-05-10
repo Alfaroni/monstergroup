@@ -1,0 +1,99 @@
+ /*! utilities */
+@import "animate.css";
+
+$color-white: #FFFFFF
+$color-black: #000000
+$color-primary: #BCA05A
+$color-primary-light: #EFE4A7
+$color-white-light: rgba($color-white, .2)
+$color-primary-transparent: rgba($color-primary, .2)
+$color-grey: #303030
+
+\:root
+    --color-white: $color-white
+    --color-black: $color-black
+    --color-primary: $color-primary
+    --color-primary-transparent: $color-primary-transparent
+    --color-primary-light: $color-primary-light
+    --color-white-light: $color-white-light
+    --color-grey: $color-grey
+    --breakpoint-xs: 0
+    --breakpoint-sm: 576px
+    --breakpoint-md: 768px
+    --breakpoint-lg: 992px
+    --breakpoint-xl: 1200px
+    --font-primary: 'Source Sans Pro', sans-serif
+    --font-playfair: 'Playfair Display', sans-serif
+
+@-ms-viewport
+    width: device-width
+
+body
+    font-family: var(--font-primary)
+    position: relative
+    overflow-x: hidden
+    font-weight: normal
+    font-size: 16px
+
+img 
+    color: transparent
+
+a:hover 
+    color: var(--color-primary)
+
+.text-primary,
+.hover\:text-primary:hover
+    color: var(--color-primary)
+
+.bg-primary,
+.hover\:bg-primary:hover
+    background-color: var(--color-primary)
+
+.bg-grey,
+.hover\:bg-grey:hover
+    background-color: var(--color-grey)
+
+.text-grey,
+.hover\:text-grey:hover
+    color: var(--color-grey)
+
+.border
+    &-grey
+        border-color: var(--color-grey)
+    &-primary
+        border-color: var(--color-primary)
+
+.font 
+    &-primary
+        font-family: var(--font-primary)
+    &-playfair
+        font-family: var(--font-playfair)
+
+// $feather: ("sm": 16px, "lg": 32px, "xl": 40px, "2xl": 72px)
+// @each $name, $i in $feather
+//     .feather-#{$name}
+//         width: $i
+//         height: $i
+
+=line-clamp($count)
+    overflow: hidden
+    text-overflow: ellipsis
+    display: -webkit-box
+    -webkit-line-clamp: $count
+    -webkit-box-orient: vertical
+
+$lineclamp: 3
+@for $i from 1 through $lineclamp
+    .lineclamp-#{$i}
+        +line-clamp($i)
+
+.overflow-x-auto
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none
+
+
+
+
+

@@ -1,0 +1,110 @@
+.hamburger.collapsed .hamburger-icon-inner {
+  transform: translateY(4px);
+}
+
+.hamburger.collapsed .hamburger-icon-inner::after {
+  transform: translateY(-8px);
+}
+
+.hamburger-icon {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hamburger-icon-inner, .hamburger-icon-inner::before, .hamburger-icon-inner::after {
+  background-color: var(--color-white);
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  position: absolute;
+  transition: transform 0.15s ease;
+  display: block;
+}
+
+.hamburger-icon-inner {
+  top: 0;
+}
+
+.hamburger-icon-inner::after {
+  content: "";
+  bottom: -8px;
+  width: 70%;
+}
+
+.header-collapse, .header-collapse-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.header-collapse {
+  transition: transform .5s ease;
+  transform: translate3d(100%, 0, 0);
+  overflow-x: auto;
+}
+
+.header-collapse.open {
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+}
+
+.header-collapse .nav {
+  counter-reset: counter;
+}
+
+.header-collapse .nav-item {
+  counter-increment: counter;
+}
+
+.header-collapse .nav-item-link {
+  position: relative;
+  padding-left: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  display: block;
+}
+
+.header-collapse .nav-item-link::before {
+  content: counter(counter, decimal-leading-zero) ". ";
+  font-size: 40%;
+  font-weight: normal;
+}
+
+.header-collapse .nav-item-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  bottom: 10px;
+  height: 10px;
+  background-color: var(--color-primary-transparent);
+  transition: width .5s ease;
+  overflow: hidden;
+}
+
+.header-collapse .nav-item.active .nav-item-link {
+  color: var(--color-primary);
+}
+
+.header-collapse .nav-item.active .nav-item-link::after {
+  width: 3rem;
+}
+
+@media (min-width: 768px) {
+  .header-collapse {
+    position: static;
+    pointer-events: auto;
+    transform: none;
+    overflow-x: hidden;
+  }
+  .header-collapse .nav-item-link::before {
+    display: none;
+  }
+}
