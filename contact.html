@@ -54,11 +54,11 @@
                             <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
                                 <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
                                     <li class="nav-item"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
-                                    <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                                    <li class="nav-item"><a href="about.html" data-toggle="menuspy" class="nav-item-link">About us</a></li>
                                     <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
                                     <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
-                                    <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
-                                    <li class="nav-item active"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                                    <li class="nav-item"><a href="news.html" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                                    <li class="nav-item active"><a href="contact.html" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
                                 </ul>
                                 <div class="address flex gap-4 items-start justify-between md:hidden">
                                     <p class="address-text">
@@ -244,42 +244,45 @@
                                             </template>
                                         </ul>
                                     </div>
-                                    <div class="tab-content flex flex-col md:flex-row bg-white text-black">
-                                        <template x-for="x in maps">
-                                            <div :id="x.id" class="tab-content-item flex-item md:w-96" :class="{'hidden': !getActiveStatus(x.id)}">
-                                                <div class="tab tab--city flex flex-col h-full" x-data="{activeTab: 'sub1'}">
-                                                    <div class="tab-nav bg-neutral-200">
-                                                        <ul class="tab-nav-list list-none flex whitespace-nowrap overflow-x-auto p-4 gap-2 text-sm">
+                                    <div class="relative pl-0 xl:pl-96" x-data="{ menumap: false }">
+                                        <div class="tab-slideLeft tab-content absolute inset-0 right-12 xl:w-96 bg-white text-black transition-transform duration-500 -translate-x-full xl:translate-x-0" :class="[menumap ? 'open' : '']" >
+                                            <button type="button" @click="menumap =! menumap" class="bg-black text-white w-12 h-12 flex items-center justify-center absolute text-3xl -right-12 top-1/2 -mt-6 xl:hidden"><i class='bx bx-chevron-right'></i></button>
+                                            <template x-for="x in maps">
+                                                <div :id="x.id" class="tab-content-item h-full" :class="{'hidden': !getActiveStatus(x.id)}">
+                                                    <div class="tab tab--city flex flex-col justify-between h-full" x-data="{activeTab: 'sub1'}">
+                                                        <div class="tab-nav bg-neutral-200">
+                                                            <ul class="tab-nav-list list-none flex whitespace-nowrap overflow-x-auto p-4 gap-2 text-sm">
+                                                                <template x-for="sub in x.sub">
+                                                                    <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(sub.id)}"><a href="#" :data-tab-open="sub.id" :data-embed="sub.embed" class="border border-black rounded-full block py-1 px-4" x-text="sub.city"></a></li>
+                                                                </template>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-content flex-1 flex flex-col justify-between overflow-y-auto">
                                                             <template x-for="sub in x.sub">
-                                                                <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(sub.id)}"><a href="#" :data-tab-open="sub.id" :data-embed="sub.embed" class="border border-black rounded-full block py-1 px-4" x-text="sub.city"></a></li>
+                                                                <div :id="sub.id" class="tab-content-item flex-1 overflow-y-auto" :class="{'hidden': !getActiveStatus(sub.id)}">
+                                                                    <ul class="tab--city-address list-none flex flex-col" x-data="{activeTab: 'ad1'}">
+                                                                        <template x-for="address in sub.address">
+                                                                            <li class="tab--city-address-item border-b text-sm md:text-base" :class="{'active': getActiveStatus(address.id)}">
+                                                                                <a href="#" @click="menumap = false" :data-embed="address.embed" class="flex justify-between items-center py-6 px-4">
+                                                                                    <i class='bx bxs-map'></i>
+                                                                                    <p class="flex-1 px-4" x-html="address.title"></p>
+                                                                                    <i class='bx bx-chevron-right'></i>
+                                                                                </a>
+                                                                            </li>
+                                                                        </template>
+                                                                    </ul>
+                                                                </div>
                                                             </template>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="tab-content flex-1 flex flex-col justify-between">
-                                                        <template x-for="sub in x.sub">
-                                                            <div :id="sub.id" class="tab-content-item flex-1" :class="{'hidden': !getActiveStatus(sub.id)}">
-                                                                <ul class="tab--city-address list-none flex flex-col overflow-y-auto" style="max-height: 480px;" x-data="{activeTab: 'ad1'}">
-                                                                    <template x-for="address in sub.address">
-                                                                        <li class="tab--city-address-item border-b" :class="{'active': getActiveStatus(address.id)}">
-                                                                            <a href="#" :data-embed="address.embed" class="flex justify-between items-center py-6 px-4">
-                                                                                <i class='bx bxs-map'></i>
-                                                                                <p class="flex-1 px-4" x-html="address.title"></p>
-                                                                                <i class='bx bx-chevron-right'></i>
-                                                                            </a>
-                                                                        </li>
-                                                                    </template>
-                                                                </ul>
+                                                            <div class="info flex flex-col gap-4 px-4 py-6 text-primary text-base md:text-lg">
+                                                                <span class="flex items-center"><i class='bx bx-envelope mr-2'></i> email@monstegroup.co.id</span>
+                                                                <span class="flex items-center"><i class='bx bx-phone mr-2'></i> +44 (0) 207 729 3512</span>
                                                             </div>
-                                                        </template>
-                                                        <div class="info flex flex-col gap-4 px-4 py-6 text-primary text-base md:text-lg">
-                                                            <span class="flex items-center"><i class='bx bx-envelope mr-2'></i> email@monstegroup.co.id</span>
-                                                            <span class="flex items-center"><i class='bx bx-phone mr-2'></i> +44 (0) 207 729 3512</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </template>
-                                        <div class="flex-item flex-1">
+                                            </template>
+                                        </div>
+                                        <div class="tab-content-embed">
                                             <iframe class="maps w-full aspect-video h-full" width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Monster%20Group%20Jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                                         </div>
                                     </div>
@@ -353,12 +356,12 @@
                 <div class="footer-bottom flex flex-col md:flex-row md:justify-between md:items-end gap-8">
                     <div class="footer-bottom-right md:mb-0 md:order-last">
                         <ul class="nav flex flex-wrap w-5/6 md:w-full list-none gap-2">
-                            <li class="nav-item active"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
-                            <li class="nav-item"><a href="index.html#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
+                            <li class="nav-item"><a href="index.html#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
+                            <li class="nav-item"><a href="about.html" data-toggle="menuspy" class="nav-item-link">About us</a></li>
                             <li class="nav-item"><a href="index.html#compro" data-toggle="menuspy" class="nav-item-link">Companies / Products</a></li>
                             <li class="nav-item"><a href="career.html" class="nav-item-link">Careers</a></li>
-                            <li class="nav-item"><a href="index.html#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
-                            <li class="nav-item"><a href="index.html#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
+                            <li class="nav-item"><a href="news.html" data-toggle="menuspy" class="nav-item-link">News</a></li>
+                            <li class="nav-item"><a href="contact.html" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-bottom-left">
@@ -376,9 +379,9 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://unpkg.com/alpinejs@3.9.5/dist/cdn.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" defer></script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js" defer></script>
-        <script src="js/main.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.1/dist/simpleParallax.min.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

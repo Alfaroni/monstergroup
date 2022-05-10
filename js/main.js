@@ -3,11 +3,6 @@
 
 $(function(){
 
-    var wow = new WOW({
-        animateClass: 'animate__animated',
-    });
-    wow.init();
-    
     var images = document.querySelectorAll('img.parallax');
     var instance = new simpleParallax(images, {
         scale: 1.5,
@@ -142,14 +137,14 @@ $(function(){
                 $("html, body").stop().animate({ "scrollTop": $(this).closest(".section").offset().top - $hHeader }, 1000);
             }if($('.section--client').find(this).length){
                 if(ourId == 'all') {
-                    $(this).closest(".tab").find(".tab-content-item").addClass('swiper-slide').fadeIn();
+                    $(this).closest(".tab").find(".tab-content").eq(0).find(".tab-content-item").addClass('swiper-slide').fadeIn();
                 }else{
-                    $(this).closest(".tab").find(".tab-content-item:not(#" + ourId + ")").removeClass('hidden swiper-slide').hide()
-                    $(this).closest(".tab").find(".tab-content-item#" + ourId).addClass('swiper-slide').fadeIn()
+                    $(this).closest(".tab").find(".tab-content").eq(0).find(".tab-content-item:not(#" + ourId + ")").removeClass('hidden swiper-slide').hide()
+                    $(this).closest(".tab").find(".tab-content").eq(0).find(".tab-content-item#" + ourId).addClass('swiper-slide').fadeIn()
                 }
             }else{
-                $(this).closest(".tab").find(">.tab-content >.tab-content-item:not(#" + ourId + ")").removeClass('hidden').hide()
-                $(this).closest(".tab").find(">.tab-content >.tab-content-item#" + ourId).fadeIn()
+                $(this).closest(".tab").find(".tab-content").eq(0).find(">.tab-content-item:not(#" + ourId + ")").removeClass('hidden').hide()
+                $(this).closest(".tab").find(".tab-content").eq(0).find(">.tab-content-item#" + ourId).fadeIn()
             }
             e.preventDefault();
         });
@@ -198,6 +193,7 @@ $(function(){
 
     $('[data-embed]').on('click', function(e) {
         var ourEmbed = $(this).attr('data-embed');
+        $(this).parent().addClass("active").siblings().removeClass("active")
         $('.maps').attr('src', ourEmbed)
         e.preventDefault();
     });
@@ -213,4 +209,10 @@ $(function(){
         $('.header-btn--menu.collapsed').trigger('click')
         e.preventDefault()
     });
+
+    var wow = new WOW({
+        animateClass: 'animate__animated',
+    });
+    wow.init();
+    
 });

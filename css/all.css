@@ -484,6 +484,15 @@ a:hover {
   box-shadow: inset 18px 0px 18px 0px rgba(0, 0, 0, 0.2);
 }
 
+.mask-img {
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .swiper {
   visibility: hidden;
   opacity: 0;
@@ -574,6 +583,10 @@ a:hover {
 
 .section--header-maps .tab--country > .tab-nav .tab-nav-list-item.active a::before {
   width: 30px;
+}
+
+.section--header-maps .tab--country .tab-slideLeft.open {
+  transform: translate3d(0, 0, 0);
 }
 
 .section--header-maps .tab--city > .tab-nav .tab-nav-list-item.active a {

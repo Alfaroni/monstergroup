@@ -148,6 +148,14 @@
     animation: marquee 30s infinite linear
     box-shadow: inset 18px 0px 18px 0px rgba(0,0,0,0.2)
 
+.mask-img
+    mask-repeat: no-repeat
+    -webkit-mask-repeat: no-repeat
+    mask-size: contain
+    -webkit-mask-size: contain
+    background-size: contain
+    background-repeat: no-repeat
+
 .swiper
     visibility: hidden
     opacity: 0
@@ -202,20 +210,24 @@
                 min-height: 600px
             .tab
                 &--country 
-                    >.tab-nav
-                        .tab-nav-list-item
-                            a
-                                &::before
-                                    content: ""
-                                    display: inline-block
-                                    vertical-align: middle
-                                    width: 0px
-                                    border-top: 1px solid  
-                                    transition: .5s ease
-                            &.active
-                                color: var(--color-primary)
-                                a::before 
-                                    width: 30px
+                    >.tab
+                        &-nav
+                            .tab-nav-list-item
+                                a
+                                    &::before
+                                        content: ""
+                                        display: inline-block
+                                        vertical-align: middle
+                                        width: 0px
+                                        border-top: 1px solid  
+                                        transition: .5s ease
+                                &.active
+                                    color: var(--color-primary)
+                                    a::before 
+                                        width: 30px
+                    .tab-slideLeft
+                        &.open
+                            transform: translate3d(0, 0, 0)
                 &--city
                     >.tab-nav
                         .tab-nav-list-item
