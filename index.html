@@ -366,8 +366,8 @@
                 >
                     <div class="container relative mx-auto px-4 py-20 max-w-full md:max-w-screen-2xl xl:px-32">
                         <div class="tab relative">
-                            <div class="tab-nav mb-12 md:absolute md:top-0 md:left-0 md:rotate-90 md:origin-top-left md:mb-0 md:ml-12">
-                                <ul class="tab-nav-list list-none inline-flex items-center text-xl text-white/50 border border-white/20 whitespace-nowrap wow animate__fadeInUp">
+                            <div class="tab-nav mb-12 md:absolute md:top-0 md:left-0 md:-rotate-90 md:origin-bottom-left md:mt-64 md:mb-0 md:ml-12">
+                                <ul class="tab-nav-list list-none inline-flex items-center text-xl text-white/50 border border-white/20 whitespace-nowrap wow animate__fadeInUp md:flex-row-reverse">
                                     <template x-for="tab in products">
                                         <li class="tab-nav-list-item" :class="{ 'active': getActiveStatus(tab.id)}">
                                             <a href="#" :data-tab-open="tab.id" class="flex items-center h-12 px-4" x-text="tab.name"></a>
