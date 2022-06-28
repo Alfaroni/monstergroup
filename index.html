@@ -76,7 +76,8 @@
 
                                 <div x-data="{open: false}" class="dropdown text-base flex justify-end mt-8 md:mt-0 md:ml-8 relative">
                                     <button class="h-10 flex items-center font-semibold" @click="open = ! open">
-                                        <i class='bx bx-globe mt-0.5'></i><span class="ml-1 mr-2"><span class="md:hidden">Bahasa Indonesia</span> <span class="hidden md:inline">ID</span></span><i class='bx bx-chevron-down' ></i>
+                                        <img src="assets/indonesia.png" alt="lang" width="16" height="16" class="object-contain"><span class="mx-2"><span class="md:hidden">Bahasa Indonesia</span> <span class="hidden md:inline">ID</span></span><i class='bx bx-chevron-down' ></i>
+                                        <!-- <img src="assets/united-kingdom.png" alt="lang" width="16" height="16" class="object-contain"><span class="mx-2"><span class="md:hidden">English</span> <span class="hidden md:inline">ID</span></span><i class='bx bx-chevron-down' ></i> -->
                                     </button> 
                                     <ul style="display: none;" class="dropdown-menu absolute bottom-10 md:bottom-auto md:top-10 right-0 text-gray-700 w-32 md:w-20 bg-white" x-show="open" @click.away="open = false" x-transition>
                                         <li class="dropdown-menu-item active bg-grey text-primary"><a class="block px-2 py-1" href="#"><span class="md:hidden">Indonesia</span> <span class="hidden md:block">ID</span></a></li>
