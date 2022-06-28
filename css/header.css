@@ -102,7 +102,7 @@
     position: static;
     pointer-events: auto;
     transform: none;
-    overflow-x: hidden;
+    overflow-x: visible;
   }
   .header-collapse .nav-item-link::before {
     display: none;

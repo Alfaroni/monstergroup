@@ -50,8 +50,9 @@
                         <button class="header-btn header-btn--menu hamburger h-20 px-4 -mr-4 relative z-30 block md:hidden" @click="menubar =! menubar" :class="[menubar ? 'collapsed' : '']" type="button" name="btn-menubar" aria-label="btn-menubar">
                             <span class="hamburger-icon"><span class="hamburger-icon-inner"></span></span>
                         </button>
-                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent" :class="[menubar ? 'open' : '']">
-                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0">
+                        <div class="header-collapse header-collapse--menu bg-black text-white z-20 md:bg-transparent whitespace-nowrap" :class="[menubar ? 'open' : '']">
+                            <div class="header-collapse-inner py-20 px-4 pl-8 md:py-0 md:pr-0 flex flex-col md:flex-row">
+
                                 <ul class="nav flex flex-col list-none gap-8 md:gap-2 text-2xl mb-12 -ml-4 md:flex-row md:text-base md:mb-0">
                                     <li class="nav-item active"><a href="#home" data-toggle="menuspy" class="nav-item-link">Home</a></li>
                                     <li class="nav-item"><a href="#about" data-toggle="menuspy" class="nav-item-link">About us</a></li>
@@ -60,6 +61,7 @@
                                     <li class="nav-item"><a href="#news" data-toggle="menuspy" class="nav-item-link">News</a></li>
                                     <li class="nav-item"><a href="#contact" data-toggle="menuspy"  class="nav-item-link">Contact</a></li>
                                 </ul>
+
                                 <div class="address flex gap-4 items-start justify-between md:hidden">
                                     <p class="address-text">
                                         <span class="text-lg font-semibold block">JAKARTA</span> 
@@ -70,6 +72,16 @@
                                         </span>
                                     </p>
                                     <a class="btn btn-outline w-28 h-7 text-xs px-2 border shadow-white" href="contact.html">see on maps <i class="icon icon-xs icon-chevright ml-2"></i> </a> 
+                                </div>
+
+                                <div x-data="{open: false}" class="dropdown text-base flex justify-end mt-8 md:mt-0 md:ml-8 relative">
+                                    <button class="h-10 flex items-center font-semibold" @click="open = ! open">
+                                        <i class='bx bx-globe mt-0.5'></i><span class="ml-1 mr-2"><span class="md:hidden">Bahasa Indonesia</span> <span class="hidden md:inline">ID</span></span><i class='bx bx-chevron-down' ></i>
+                                    </button> 
+                                    <ul style="display: none;" class="dropdown-menu absolute bottom-10 md:bottom-auto md:top-10 right-0 text-gray-700 w-32 md:w-20 bg-white" x-show="open" @click.away="open = false" x-transition>
+                                        <li class="dropdown-menu-item active bg-grey text-primary"><a class="block px-2 py-1" href="#"><span class="md:hidden">Indonesia</span> <span class="hidden md:block">ID</span></a></li>
+                                        <li class="dropdown-menu-item"><a class="block px-2 py-0.5" href="#"><span class="md:hidden">English</span> <span class="hidden md:block">EN</span></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
